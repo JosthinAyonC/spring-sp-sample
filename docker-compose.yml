@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  app:
+    image: 'nueva-plantilla'
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - DB_URL=jdbc:oracle:thin:@db:1521/XE
+      - DB_USERNAME=system
+      - DB_PASSWORD=12345
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "8080:8080"
+
+  db:
+    image: 'gvenzl/oracle-xe:latest-faststart'
+    container_name: db
+    environment:
+      - ORACLE_PASSWORD=12345
+    ports:
+      - 1521:1521

@@ -1,0 +1,32 @@
+# PORT
+server:
+    port: ${PORT:8080}
+# DATABASE
+spring:
+    datasource:
+        url: ${DB_URL:jdbc:oracle:thin:@localhost:1521/xe}
+        username: ${DB_USERNAME:JOSTHIN}
+        password: ${DB_PASSWORD:admin123}
+        driver-class-name: oracle.jdbc.OracleDriver
+# Hibernate 
+    jpa:
+        generate-ddl: false
+        hibernate.ddl-auto: update
+# API PATH
+    mvc:
+        servlet:
+            path: /telco/v2
+# CONFIG
+    jackson:
+        time-zone: America/Guayaquil
+# SWAGGER
+springdoc:
+    swagger-ui.enabled: true
+    swagger-ui.path: /swagger-ui.html
+    api-docs.path: /api-docs
+# JWT
+value:
+    environment:
+        jwt:
+            jwtSecret: ${APP_JWT_SECRET:baseSecretKey}
+            jwtExpirationMs: ${APP_JWT_EXPIRATION_MS:1200000}
